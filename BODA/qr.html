@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarjeta QR · Diomedes & Neila</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root{--gold:#b8975a;--gold-deep:#9c7b40;--line:rgba(184,151,90,.4);--ink:#2e2a24;--soft:#8a8276;
+        --metal:linear-gradient(120deg,#9c7b40 0%,#d8bf85 28%,#b8975a 50%,#ead9ae 72%,#a8874b 100%)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Montserrat',sans-serif;font-weight:300;color:var(--ink);background:#f1ede5;min-height:100vh;padding:24px 16px;display:flex;flex-direction:column;align-items:center;gap:20px}
+  .tools{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:520px;width:100%}
+  .tools input{flex:1 1 260px;padding:12px 14px;border:1px solid var(--line);font-size:.88rem;background:#fff}
+  .tools button{padding:12px 22px;border:none;background:var(--metal);color:#fff;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+  .hint{font-size:.76rem;color:var(--soft);text-align:center;max-width:420px;line-height:1.6}
+  .card{
+    width:min(420px,100%);aspect-ratio:5/7;background:#fff;position:relative;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 34px;
+    box-shadow:0 30px 60px -30px rgba(80,60,30,.4);
+  }
+  .card::before{content:"";position:absolute;inset:16px;border:1px solid var(--gold)}
+  .card::after{content:"";position:absolute;inset:22px;border:1px solid rgba(184,151,90,.25)}
+  .rings{position:relative;width:84px;height:68px}
+  .k{position:relative;font-size:.58rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold-deep);margin-top:8px;padding-left:.5em}
+  h1{position:relative;font-family:'Great Vibes',cursive;font-weight:400;font-size:3rem;line-height:1.1;margin:6px 0 2px;background:var(--metal);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .date{position:relative;font-family:'Cormorant Garamond',serif;font-size:.95rem;letter-spacing:.3em;display:flex;align-items:center;gap:10px}
+  .date::before,.date::after{content:"";width:28px;height:1px;background:var(--gold)}
+  .qrwrap{position:relative;margin:20px 0 16px;padding:10px;border:1px solid var(--line)}
+  #qr img,#qr canvas{display:block;width:160px!important;height:160px!important}
+  .msg{position:relative;font-family:'Cormorant Garamond',serif;font-size:1.12rem;line-height:1.5;max-width:270px;color:var(--soft)}
+  .msg b{font-weight:500;color:var(--gold-deep)}
+  .foot{position:relative;margin-top:12px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--gold-deep)}
+  @media print{
+    body{background:#fff;padding:0}
+    .tools,.hint{display:none}
+    .card{box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+  <div class="tools">
+    <input id="url" type="url" placeholder="Pega aquí el enlace de tu página publicada">
+    <button id="gen">Generar QR</button>
+    <button id="print">Imprimir</button>
+  </div>
+  <p class="hint">Escribe el enlace donde publicaste la página (Netlify, GitHub Pages…) y toca «Generar QR». Luego imprime la tarjeta para cada mesa.</p>
+
+  <div class="card">
+    <svg class="rings" viewBox="0 0 120 96" aria-hidden="true">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ead9ae"/><stop offset=".45" stop-color="#b8975a"/><stop offset=".7" stop-color="#d8bf85"/><stop offset="1" stop-color="#9c7b40"/></linearGradient></defs>
+      <g fill="none" stroke-linecap="round">
+        <circle cx="46" cy="58" r="28" stroke="url(#g)" stroke-width="3.2"/>
+        <circle cx="74" cy="58" r="28" stroke="url(#g)" stroke-width="3.2"/>
+        <path d="M55.6 31.7 A28 28 0 0 1 65.8 38.2" stroke="#fff" stroke-width="7"/>
+        <path d="M55.6 31.7 A28 28 0 0 1 65.8 38.2" stroke="url(#g)" stroke-width="3.2"/>
+        <path d="M40 22 L46 15 L52 22 L46 30 Z" fill="#fff" stroke="url(#g)" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M40 22 H52 M46 15 L44 22 L46 30 M46 15 L48 22" stroke="url(#g)" stroke-width=".8"/>
+      </g>
+    </svg>
+    <div class="k">Nuestra boda</div>
+    <h1>Diomedes &amp; Neila</h1>
+    <div class="date">21 · 11 · 2026</div>
+    <div class="qrwrap"><div id="qr"></div></div>
+    <p class="msg">Escanea el código y <b>comparte las fotos</b> que tomaste hoy en nuestro álbum.</p>
+    <div class="foot">Gracias por ser parte de nuestra historia</div>
+  </div>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const input = document.getElementById("url");
+  input.value = params.get("url") || "https://nuestrabodadiomeyneila.netlify.app/";
+  function gen(){
+    const box = document.getElementById("qr"); box.innerHTML = "";
+    new QRCode(box, { text: input.value.trim() || location.href, width: 320, height: 320, colorDark: "#3a3226", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H });
+  }
+  document.getElementById("gen").onclick = gen;
+  document.getElementById("print").onclick = () => window.print();
+  gen();
+</script>
+</body>
+</html>

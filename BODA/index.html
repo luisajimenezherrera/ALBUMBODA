@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Diomedes & Neila · Nuestra Boda</title>
+<meta name="description" content="Álbum de la boda de Diomedes y Neila. Comparte las fotos que tomaste en nuestro gran día.">
+<meta name="theme-color" content="#fdfcf8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   BLANCO & DORADO · MINIMALISTA
+   ========================================================= */
+:root{
+  --white:#ffffff;
+  --ivory:#fdfcf8;
+  --pearl:#f7f3ea;
+  --gold:#b8975a;
+  --gold-deep:#9c7b40;
+  --gold-light:#e3d3a8;
+  --gold-line:rgba(184,151,90,.35);
+  --metal:linear-gradient(120deg,#9c7b40 0%,#d8bf85 28%,#b8975a 50%,#ead9ae 72%,#a8874b 100%);
+  --ink:#2e2a24;
+  --ink-soft:#8a8276;
+  --script:'Great Vibes',cursive;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Montserrat',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);font-weight:300;color:var(--ink);
+  background:var(--ivory);min-height:100vh;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+/* ---------- Destellos dorados ---------- */
+#sparkles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.spark{position:absolute;width:8px;height:8px;color:var(--gold-light);opacity:0;animation:twinkle ease-in-out infinite}
+.spark svg{width:100%;height:100%;display:block}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:.9;transform:scale(1) rotate(45deg)}}
+
+main,header,footer,nav{position:relative;z-index:1}
+
+/* ---------- Navegación ---------- */
+.nav{
+  position:sticky;top:0;z-index:20;display:flex;justify-content:center;gap:4px;
+  padding:14px 16px;background:rgba(253,252,248,.88);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--gold-line);
+}
+.nav a{
+  font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);
+  text-decoration:none;padding:6px 14px;position:relative;transition:color .3s;
+}
+.nav a::after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;background:var(--gold);transition:.35s}
+.nav a:hover{color:var(--gold-deep)}
+.nav a:hover::after{left:14px;right:14px}
+
+/* ---------- HERO ---------- */
+.hero{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;padding:0 0 70px;position:relative;
+}
+/* Foto de portada */
+.hero-photo{
+  position:relative;width:100%;
+  height:72vh;height:72svh;min-height:380px;max-height:820px;
+  overflow:hidden;background:var(--pearl);
+}
+.hero-photo img{
+  width:100%;height:100%;object-fit:cover;object-position:51% 32%;
+  animation:slowZoom 14s ease-out both;
+}
+@keyframes slowZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero-photo::before{ /* marco fino dentro de la foto */
+  content:"";position:absolute;inset:16px;z-index:2;pointer-events:none;
+  border:1px solid rgba(255,255,255,.75);
+}
+.hero-photo::after{ /* desvanecido hacia el fondo marfil */
+  content:"";position:absolute;left:0;right:0;bottom:0;height:42%;z-index:1;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(253,252,248,0) 0%,rgba(253,252,248,.75) 60%,var(--ivory) 100%);
+}
+.hero-text{
+  position:relative;z-index:3;margin-top:-90px;padding:0 20px;
+  display:flex;flex-direction:column;align-items:center;max-width:100%;
+}
+.kicker{font-size:.7rem;letter-spacing:.55em;text-transform:uppercase;color:var(--gold-deep);animation:fadeUp 1.4s .2s ease both;padding-left:.55em}
+.names{
+  font-family:var(--script);font-weight:400;font-size:clamp(3.6rem,13vw,8rem);line-height:1.1;margin:18px 0 8px;
+  background:var(--metal);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:fadeUp 1.4s .35s ease both, shine 8s linear infinite;padding:0 10px;
+}
+.names .amp{display:block;font-family:var(--serif);font-style:italic;font-weight:300;font-size:.38em;margin:.05em 0}
+@keyframes shine{to{background-position:200% center}}
+.subtitle{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.25rem,4vw,1.65rem);color:var(--ink-soft);animation:fadeUp 1.4s .5s ease both}
+.date{
+  margin-top:22px;font-family:var(--serif);font-size:1.05rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ink);
+  display:flex;align-items:center;gap:16px;animation:fadeUp 1.4s .6s ease both;
+}
+.date::before,.date::after{content:"";width:46px;height:1px;background:var(--gold)}
+.hero p.invite{
+  max-width:500px;margin:30px auto 0;font-family:var(--serif);font-size:1.22rem;font-weight:300;line-height:1.7;color:var(--ink-soft);
+  animation:fadeUp 1.4s .75s ease both;
+}
+.hero p.invite em{color:var(--gold-deep)}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:38px;animation:fadeUp 1.4s .9s ease both}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 32px;
+  font-size:.72rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;
+  transition:all .35s ease;border-radius:0;
+}
+.btn svg{width:16px;height:16px;flex-shrink:0}
+.btn-primary{background:var(--metal);background-size:200% auto;color:var(--white);box-shadow:0 10px 26px -14px rgba(156,123,64,.8)}
+.btn-primary:hover{background-position:right center;transform:translateY(-2px)}
+.btn-ghost{color:var(--gold-deep);border:1px solid var(--gold)}
+.btn-ghost:hover{background:var(--gold);color:var(--white)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+
+.scroll-hint{margin-top:54px;color:var(--gold);animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(8px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* ---------- Secciones ---------- */
+section.block{padding:80px 16px;max-width:1080px;margin:0 auto}
+.section-head{text-align:center;margin-bottom:46px}
+.section-head .icon{width:54px;height:54px;color:var(--gold);margin:0 auto 10px}
+.section-head .script{
+  font-family:var(--script);font-size:clamp(2.6rem,8vw,3.8rem);line-height:1.15;
+  background:var(--metal);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.section-head h2{font-family:var(--sans);font-weight:300;font-size:.72rem;letter-spacing:.45em;text-transform:uppercase;color:var(--ink-soft);margin-top:10px}
+.rule{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;color:var(--gold)}
+.rule::before,.rule::after{content:"";width:70px;height:1px;background:var(--gold-line)}
+.rule span{width:6px;height:6px;border:1px solid var(--gold);transform:rotate(45deg)}
+
+/* ---------- Pasos ---------- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;max-width:880px;margin:0 auto 50px}
+.step{text-align:center;padding:10px 24px;position:relative}
+.step + .step::before{content:"";position:absolute;left:0;top:18%;bottom:18%;width:1px;background:var(--gold-line)}
+.step .n{
+  width:46px;height:46px;margin:0 auto 14px;border:1px solid var(--gold);border-radius:50%;
+  display:grid;place-items:center;font-family:var(--serif);font-size:1.15rem;color:var(--gold-deep);
+}
+.step h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin-bottom:6px}
+.step p{font-size:.82rem;line-height:1.7;color:var(--ink-soft)}
+@media (max-width:640px){ .step{padding:18px 10px} .step + .step::before{left:30%;right:30%;top:0;bottom:auto;width:auto;height:1px} }
+
+/* ---------- Tarjeta de subida ---------- */
+.upload-card{
+  position:relative;max-width:620px;margin:0 auto;background:var(--white);
+  padding:46px 32px;border:1px solid var(--gold-line);
+  box-shadow:0 30px 60px -40px rgba(120,95,50,.45);
+}
+.upload-card::before{content:"";position:absolute;inset:8px;border:1px solid rgba(184,151,90,.15);pointer-events:none}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.field input,.field textarea{
+  width:100%;padding:10px 2px;border:none;border-bottom:1px solid var(--gold-line);background:transparent;
+  font-family:var(--serif);font-size:1.25rem;color:var(--ink);transition:border .3s;border-radius:0;
+}
+.field textarea{resize:vertical;min-height:70px}
+.field input::placeholder,.field textarea::placeholder{color:#c5bdaf;font-style:italic}
+.field input:focus,.field textarea:focus{outline:none;border-bottom-color:var(--gold)}
+
+.pick-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:30px 0 14px}
+.pick{
+  display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px 10px;
+  border:1px solid var(--gold-line);background:var(--ivory);color:var(--gold-deep);
+  font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;transition:all .35s;
+}
+.pick svg{width:30px;height:30px}
+.pick:hover{border-color:var(--gold);background:var(--pearl);transform:translateY(-2px)}
+
+.dropzone{
+  border:1px dashed var(--gold-line);padding:22px 16px;text-align:center;
+  font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--ink-soft);transition:.3s;cursor:pointer;
+}
+.dropzone.over{border-color:var(--gold);background:var(--pearl)}
+.dropzone small{display:block;font-family:var(--sans);font-style:normal;font-size:.64rem;letter-spacing:.14em;color:#b3aa9b;margin-top:6px}
+
+.previews{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;margin-top:20px}
+.thumb{position:relative;aspect-ratio:1;overflow:hidden;background:var(--pearl);border:1px solid var(--gold-line);animation:pop .35s ease both}
+@keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb .rm{position:absolute;top:5px;right:5px;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.95);color:var(--gold-deep);font-size:15px;line-height:22px;text-align:center}
+.thumb .state{position:absolute;inset:0;display:none;place-items:center;background:rgba(255,255,255,.75)}
+.thumb.uploading .state,.thumb.done .state,.thumb.error .state{display:grid}
+.thumb.uploading .state::after{content:"";width:24px;height:24px;border-radius:50%;border:1.5px solid var(--gold-light);border-top-color:var(--gold-deep);animation:spin .8s linear infinite}
+.thumb.done .state{background:rgba(184,151,90,.55);color:#fff;font-size:22px}
+.thumb.done .state::after{content:"✓"}
+.thumb.error .state{background:rgba(46,42,36,.65);color:#fff;font-size:.6rem;letter-spacing:.14em;cursor:pointer}
+.thumb.error .state::after{content:"REINTENTAR"}
+.thumb.done .rm,.thumb.uploading .rm{display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.counter{text-align:center;margin-top:14px;font-family:var(--serif);font-style:italic;color:var(--ink-soft)}
+.progress{height:2px;background:var(--pearl);overflow:hidden;margin-top:16px;display:none}
+.progress.show{display:block}
+.progress span{display:block;height:100%;width:0;background:var(--metal);transition:width .4s}
+
+.send-row{display:flex;justify-content:center;margin-top:28px}
+.send-row .btn{width:100%;max-width:340px;padding:18px}
+
+.drive-link{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:22px;font-size:.72rem;letter-spacing:.06em;color:var(--ink-soft);text-decoration:none;transition:color .3s}
+.drive-link:hover{color:var(--gold-deep)}
+.drive-link svg{width:16px;height:16px}
+
+.notice{margin:0 auto 24px;max-width:620px;padding:14px 18px;border:1px solid var(--gold-line);background:var(--pearl);color:var(--gold-deep);font-size:.8rem;line-height:1.6;text-align:center;display:none}
+.notice.show{display:block}
+
+/* ---------- Galería ---------- */
+.gallery-tools{display:flex;justify-content:center;margin-bottom:30px}
+.gallery{columns:4 220px;column-gap:16px}
+.photo{
+  break-inside:avoid;margin-bottom:16px;position:relative;background:var(--white);
+  padding:8px 8px 36px;border:1px solid var(--gold-line);cursor:zoom-in;
+  transition:transform .4s, box-shadow .4s;animation:pop .5s ease both;
+}
+.photo:hover{transform:translateY(-4px);box-shadow:0 22px 40px -26px rgba(120,95,50,.6)}
+.photo img{width:100%;min-height:120px;background:var(--pearl)}
+.photo figcaption{
+  position:absolute;left:0;right:0;bottom:6px;text-align:center;font-family:var(--script);font-size:1.3rem;color:var(--gold-deep);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 10px;
+}
+.empty{text-align:center;padding:40px 20px;font-family:var(--serif);font-size:1.25rem;font-style:italic;color:var(--ink-soft)}
+.empty svg{width:64px;height:52px;color:var(--gold);margin:0 auto 14px;display:block}
+
+/* ---------- Lightbox ---------- */
+.lightbox{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;background:rgba(253,252,248,.97);padding:20px}
+.lightbox.open{display:flex;animation:fadeIn .3s}
+.lightbox img{max-width:100%;max-height:80vh;border:8px solid #fff;outline:1px solid var(--gold-line);box-shadow:0 30px 60px -30px rgba(0,0,0,.35)}
+.lightbox .cap{position:absolute;bottom:24px;left:0;right:0;text-align:center;font-family:var(--script);font-size:1.9rem;color:var(--gold-deep)}
+.lb-btn{position:absolute;width:46px;height:46px;border:1px solid var(--gold);color:var(--gold-deep);font-size:22px;display:grid;place-items:center;background:var(--white);transition:.3s}
+.lb-btn:hover{background:var(--gold);color:#fff}
+.lb-close{top:18px;right:18px}
+.lb-prev{left:14px;top:50%;transform:translateY(-50%)}
+.lb-next{right:14px;top:50%;transform:translateY(-50%)}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ---------- Modal ---------- */
+.modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;background:rgba(46,42,36,.35);padding:20px}
+.modal.open{display:flex;animation:fadeIn .3s}
+.modal-card{position:relative;background:var(--white);padding:46px 32px 40px;max-width:420px;text-align:center;border:1px solid var(--gold-line);animation:pop .4s ease}
+.modal-card::before{content:"";position:absolute;inset:8px;border:1px solid rgba(184,151,90,.18);pointer-events:none}
+.modal-card svg.toast-icon{width:72px;height:72px;color:var(--gold);margin:0 auto 6px;display:block}
+.modal-card .script{font-family:var(--script);font-size:3.2rem;line-height:1.1;background:var(--metal);-webkit-background-clip:text;background-clip:text;color:transparent}
+.modal-card p{font-family:var(--serif);font-size:1.18rem;line-height:1.65;color:var(--ink-soft);margin:12px 0 28px}
+.burst{position:fixed;pointer-events:none;z-index:70;animation:burst 1.8s ease-out forwards}
+@keyframes burst{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
+
+/* ---------- Footer ---------- */
+footer{text-align:center;padding:60px 20px 56px;border-top:1px solid var(--gold-line);margin-top:30px}
+footer svg{width:56px;height:46px;color:var(--gold);margin:0 auto 10px;display:block}
+footer .script{font-family:var(--script);font-size:2.4rem;background:var(--metal);-webkit-background-clip:text;background-clip:text;color:transparent}
+footer p{font-size:.64rem;letter-spacing:.36em;text-transform:uppercase;color:var(--ink-soft);margin-top:10px}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(100px);background:var(--ink);color:#fff;padding:12px 24px;font-size:.78rem;letter-spacing:.04em;z-index:80;transition:transform .35s;max-width:calc(100% - 32px);text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+@media (max-width:700px){
+  .hero-photo{height:62vh;height:62svh;min-height:340px}
+  .hero-photo img{object-position:50% 28%}
+  .hero-photo::before{inset:10px}
+  .hero-text{margin-top:-70px}
+}
+@media (max-width:560px){
+  .names{margin-top:10px}
+  .date{font-size:.92rem;letter-spacing:.22em;gap:12px}
+  .date::before,.date::after{width:30px}
+  .hero p.invite{font-size:1.12rem;margin-top:22px}
+  .cta-row{flex-direction:column;align-items:stretch;width:100%;max-width:320px}
+  .section-head{margin-bottom:34px}
+  section.block{padding:60px 16px}
+  .upload-card{padding:36px 20px}
+  .nav a{padding:6px 9px;letter-spacing:.18em}
+  .gallery{columns:2 140px;column-gap:10px}
+  .photo{padding:5px 5px 28px;margin-bottom:10px}
+  .photo figcaption{font-size:1.05rem;bottom:4px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  #sparkles{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Iconos reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ead9ae"/><stop offset=".45" stop-color="#b8975a"/><stop offset=".7" stop-color="#d8bf85"/><stop offset="1" stop-color="#9c7b40"/>
+    </linearGradient>
+  </defs>
+  <!-- Dos anillos entrelazados -->
+  <symbol id="i-rings" viewBox="0 0 120 96">
+    <g fill="none" stroke-linecap="round">
+      <circle cx="46" cy="58" r="28" stroke="url(#goldGrad)" stroke-width="3.2"/>
+      <circle cx="74" cy="58" r="28" stroke="url(#goldGrad)" stroke-width="3.2"/>
+      <!-- cruce para que se vean entrelazados -->
+      <path d="M55.6 31.7 A28 28 0 0 1 65.8 38.2" stroke="#fff" stroke-width="7"/>
+      <path d="M55.6 31.7 A28 28 0 0 1 65.8 38.2" stroke="url(#goldGrad)" stroke-width="3.2"/>
+      <!-- diamante -->
+      <path d="M40 22 L46 15 L52 22 L46 30 Z" fill="#fff" stroke="url(#goldGrad)" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M40 22 H52 M46 15 L44 22 L46 30 M46 15 L48 22" stroke="url(#goldGrad)" stroke-width=".8"/>
+      <!-- destellos -->
+      <path d="M30 14v6M27 17h6M90 20v5M87.5 22.5h5" stroke="#c9ad72" stroke-width="1.2"/>
+    </g>
+  </symbol>
+  <!-- Copas brindando -->
+  <symbol id="i-glasses" viewBox="0 0 64 56">
+    <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="rotate(-16 24 30)">
+        <path d="M18 12h12l-1.2 14a4.8 4.8 0 0 1-9.6 0z"/><path d="M18.6 19h10.8" opacity=".6"/>
+        <path d="M24 31v15M19 46h10"/>
+      </g>
+      <g transform="rotate(16 40 30)">
+        <path d="M34 12h12l-1.2 14a4.8 4.8 0 0 1-9.6 0z"/><path d="M34.6 19h10.8" opacity=".6"/>
+        <path d="M40 31v15M35 46h10"/>
+      </g>
+      <path d="M32 7V2M27 8l-2.5-3.5M37 8l2.5-3.5"/>
+    </g>
+  </symbol>
+  <symbol id="i-corner" viewBox="0 0 46 46">
+    <g fill="none" stroke="currentColor" stroke-width="1"><path d="M1 30V1h29"/><path d="M6 20V6h14"/><circle cx="6" cy="6" r="2" fill="currentColor"/></g>
+  </symbol>
+  <symbol id="i-spark" viewBox="0 0 10 10"><path d="M5 0L6 4L10 5L6 6L5 10L4 6L0 5L4 4Z" fill="currentColor"/></symbol>
+</svg>
+
+<div id="sparkles" aria-hidden="true"></div>
+
+<nav class="nav">
+  <a href="#inicio">Inicio</a>
+  <a href="#subir">Subir fotos</a>
+  <a href="#album">Álbum</a>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="hero-photo">
+    <picture>
+      <source media="(max-width: 700px)" srcset="img/portada-movil.jpg">
+      <img src="img/portada.jpg" alt="Anillos de boda dorados sobre una rosa blanca" fetchpriority="high">
+    </picture>
+  </div>
+
+  <div class="hero-text">
+  <div class="kicker">Nuestra boda</div>
+  <h1 class="names">Diomedes <span class="amp">&amp;</span> Neila</h1>
+  <div class="subtitle">Un amor para toda la vida</div>
+  <div class="date" id="weddingDate"></div>
+
+  <p class="invite">Gracias por acompañarnos en este día tan especial.
+    Ayúdanos a guardar cada sonrisa, cada abrazo y cada baile: <em>comparte aquí las fotos que tomaste</em>.</p>
+
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#subir">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M6 10l6-6 6 6"/><path d="M4 18v2h16v-2"/></svg>
+      Subir mis fotos
+    </a>
+    <a class="btn btn-ghost" href="#album">Ver el álbum</a>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <svg width="14" height="34" viewBox="0 0 14 34" fill="none" stroke="currentColor" stroke-width="1"><path d="M7 0v32M1 26l6 6 6-6"/></svg>
+  </div>
+  </div>
+</header>
+
+<main>
+  <!-- ====================== SUBIR ====================== -->
+  <section class="block" id="subir">
+    <div class="section-head">
+      <svg class="icon" aria-hidden="true"><use href="#i-glasses"/></svg>
+      <div class="script">Comparte tus recuerdos</div>
+      <h2>Sube tus fotos</h2>
+      <div class="rule"><span></span></div>
+    </div>
+
+    <div class="steps">
+      <div class="step"><div class="n">I</div><h3>Escribe tu nombre</h3><p>Así sabremos quién capturó cada momento.</p></div>
+      <div class="step"><div class="n">II</div><h3>Elige tus fotos</h3><p>Toma una foto ahora o escoge varias de tu galería.</p></div>
+      <div class="step"><div class="n">III</div><h3>Envía con amor</h3><p>Se guardan directo en nuestro álbum de recuerdos.</p></div>
+    </div>
+
+    <div class="notice" id="setupNotice">
+      Modo vista previa: aún falta conectar la página con Google Drive.
+      Sigue los pasos del archivo <strong>LEEME.md</strong>.
+    </div>
+
+    <div class="upload-card">
+      <div class="field">
+        <label for="guestName">Tu nombre</label>
+        <input id="guestName" type="text" maxlength="60" placeholder="Ej. Tía María" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="guestMsg">Un mensaje para los novios · opcional</label>
+        <textarea id="guestMsg" maxlength="400" placeholder="¡Felicidades! Les deseamos..."></textarea>
+      </div>
+
+      <div class="pick-row">
+        <button class="pick" id="btnCamera" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="4"/></svg>
+          Tomar foto
+        </button>
+        <button class="pick" id="btnGallery" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+          Mi galería
+        </button>
+      </div>
+      <input type="file" id="inCamera" accept="image/*" capture="environment" class="sr-only">
+      <input type="file" id="inGallery" accept="image/*" multiple class="sr-only">
+
+      <div class="dropzone" id="dropzone">
+        o arrastra tus fotos aquí
+        <small>Puedes subir todas las que quieras</small>
+      </div>
+
+      <div class="previews" id="previews"></div>
+      <div class="counter" id="counter"></div>
+      <div class="progress" id="progress"><span></span></div>
+
+      <div class="send-row">
+        <button class="btn btn-primary" id="btnSend" type="button" disabled>Enviar fotos</button>
+      </div>
+
+      <a class="drive-link" id="driveLink" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8l6 10-4 7H6l-4-7z"/><path d="M8 3l6 10H2M16 3l-6 10 4 7"/></svg>
+        ¿Prefieres subirlas directo a Google Drive?
+      </a>
+    </div>
+  </section>
+
+  <!-- ====================== ÁLBUM ====================== -->
+  <section class="block" id="album">
+    <div class="section-head">
+      <svg class="icon" aria-hidden="true" style="width:70px"><use href="#i-rings"/></svg>
+      <div class="script">Nuestro álbum</div>
+      <h2>Momentos compartidos</h2>
+      <div class="rule"><span></span></div>
+    </div>
+
+    <div class="gallery-tools">
+      <button class="btn btn-ghost" id="btnRefresh" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+        Actualizar
+      </button>
+    </div>
+
+    <div class="gallery" id="gallery"></div>
+    <div class="empty" id="galleryEmpty">
+      <svg aria-hidden="true"><use href="#i-glasses"/></svg>
+      Aún no hay fotos… ¡sé el primero en compartir un recuerdo!
+    </div>
+  </section>
+</main>
+
+<footer>
+  <svg aria-hidden="true"><use href="#i-rings"/></svg>
+  <div class="script">Diomedes &amp; Neila</div>
+  <p id="footDate"></p>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Cerrar">×</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Siguiente">›</button>
+  <div class="cap" id="lbCap"></div>
+</div>
+
+<!-- Modal gracias -->
+<div class="modal" id="thanks" role="dialog" aria-modal="true">
+  <div class="modal-card">
+    <svg class="toast-icon" aria-hidden="true"><use href="#i-glasses"/></svg>
+    <div class="script">¡Gracias!</div>
+    <p id="thanksText">Tus fotos ya forman parte de nuestro álbum.</p>
+    <button class="btn btn-primary" id="thanksClose" type="button">Ver el álbum</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   CONFIGURACIÓN — EDITA SOLO ESTA PARTE
+   ========================================================= */
+const CONFIG = {
+  // URL de la "Aplicación web" de Google Apps Script (ver LEEME.md)
+  SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzOijoWj8Il-PqLakntDNQ-Dzfa_9bYPiSufteHwWxh95A0B9RsJXx1hgvN1fOQFuEh/exec",
+  // Enlace de la carpeta de Google Drive (opción alternativa para subir)
+  DRIVE_FOLDER_URL: "https://drive.google.com/drive/folders/1ST0c2AiFOctnmK1lcxchy1tBWfBiYUah",
+  // Texto de la fecha que aparece debajo de los nombres
+  FECHA: "21 · 11 · 2026",
+  // Tamaño máximo (lado mayor) al que se comprimen las fotos antes de subir
+  MAX_PX: 2400,
+  CALIDAD: 0.86
+};
+/* ========================================================= */
+
+const $ = s => document.querySelector(s);
+const configured = /^https:\/\/script\.google\.com\//.test(CONFIG.SCRIPT_URL);
+
+$("#weddingDate").textContent = CONFIG.FECHA;
+$("#footDate").textContent = "Sábado 21 de noviembre de 2026 · Con amor y gratitud";
+if (!configured) $("#setupNotice").classList.add("show");
+if (CONFIG.DRIVE_FOLDER_URL) $("#driveLink").href = CONFIG.DRIVE_FOLDER_URL;
+else $("#driveLink").style.display = "none";
+
+try { $("#guestName").value = localStorage.getItem("boda-guest") || ""; } catch(e){}
+
+/* ---------- Destellos ---------- */
+(function sparkles(){
+  const box = $("#sparkles");
+  const n = window.innerWidth < 600 ? 12 : 22;
+  for (let i = 0; i < n; i++){
+    const s = document.createElement("div");
+    s.className = "spark";
+    s.innerHTML = '<svg><use href="#i-spark"/></svg>';
+    const size = 5 + Math.random() * 9;
+    s.style.width = s.style.height = size + "px";
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.top = Math.random() * 100 + "vh";
+    s.style.animationDuration = 3 + Math.random() * 5 + "s";
+    s.style.animationDelay = -Math.random() * 8 + "s";
+    box.appendChild(s);
+  }
+})();
+
+/* ---------- Toast ---------- */
+let toastT;
+function toast(msg){
+  const t = $("#toast"); t.textContent = msg; t.classList.add("show");
+  clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 3200);
+}
+
+/* ---------- Selección de fotos ---------- */
+const queue = [];
+let uid = 0;
+
+$("#btnCamera").onclick = () => $("#inCamera").click();
+$("#btnGallery").onclick = () => $("#inGallery").click();
+$("#inCamera").onchange = e => { addFiles(e.target.files); e.target.value = ""; };
+$("#inGallery").onchange = e => { addFiles(e.target.files); e.target.value = ""; };
+
+const dz = $("#dropzone");
+["dragenter","dragover"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add("over"); }));
+["dragleave","drop"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove("over"); }));
+dz.addEventListener("drop", e => addFiles(e.dataTransfer.files));
+dz.addEventListener("click", () => $("#inGallery").click());
+
+function addFiles(list){
+  const files = [...list].filter(f => f.type.startsWith("image/") || /\.(heic|heif)$/i.test(f.name));
+  if (!files.length) return toast("Solo se pueden subir imágenes");
+  files.forEach(file => {
+    const item = { id: ++uid, file, status: "pending" };
+    const el = document.createElement("div");
+    el.className = "thumb";
+    const img = document.createElement("img");
+    img.alt = "";
+    img.src = URL.createObjectURL(file);
+    img.onerror = () => { img.replaceWith(Object.assign(document.createElement("div"), {style:"display:grid;place-items:center;height:100%;font-size:.6rem;letter-spacing:.1em;color:#9c7b40", textContent:"HEIC"})); };
+    const rm = document.createElement("button");
+    rm.className = "rm"; rm.type = "button"; rm.textContent = "×"; rm.setAttribute("aria-label","Quitar foto");
+    rm.onclick = () => { queue.splice(queue.indexOf(item), 1); el.remove(); refreshUI(); };
+    const st = document.createElement("div"); st.className = "state";
+    st.onclick = () => { if (item.status === "error"){ item.status = "pending"; el.className = "thumb"; refreshUI(); } };
+    el.append(img, rm, st);
+    item.el = el;
+    $("#previews").appendChild(el);
+    queue.push(item);
+  });
+  refreshUI();
+}
+
+let uploading = false;
+function refreshUI(){
+  const pending = queue.filter(q => q.status === "pending" || q.status === "error").length;
+  const done = queue.filter(q => q.status === "done").length;
+  $("#btnSend").disabled = pending === 0 || uploading;
+  $("#counter").textContent = queue.length
+    ? `${queue.length} foto${queue.length > 1 ? "s" : ""} seleccionada${queue.length > 1 ? "s" : ""}` + (done ? ` · ${done} enviada${done > 1 ? "s" : ""}` : "")
+    : "";
+}
+
+/* ---------- Compresión ---------- */
+function compress(file){
+  return new Promise(resolve => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      let { width: w, height: h } = img;
+      const scale = Math.min(1, CONFIG.MAX_PX / Math.max(w, h));
+      w = Math.round(w * scale); h = Math.round(h * scale);
+      const c = document.createElement("canvas"); c.width = w; c.height = h;
+      c.getContext("2d").drawImage(img, 0, 0, w, h);
+      URL.revokeObjectURL(url);
+      c.toBlob(b => resolve(b && b.size < file.size ? { blob: b, type: "image/jpeg" } : { blob: file, type: file.type || "image/jpeg" }), "image/jpeg", CONFIG.CALIDAD);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); resolve({ blob: file, type: file.type || "image/heic" }); };
+    img.src = url;
+  });
+}
+const toBase64 = blob => new Promise((res, rej) => {
+  const r = new FileReader();
+  r.onload = () => res(String(r.result).split(",")[1]);
+  r.onerror = rej;
+  r.readAsDataURL(blob);
+});
+
+/* ---------- Subida ---------- */
+$("#btnSend").onclick = async () => {
+  const guest = $("#guestName").value.trim();
+  if (!guest){ $("#guestName").focus(); return toast("Escribe tu nombre para firmar tus fotos"); }
+  try { localStorage.setItem("boda-guest", guest); } catch(e){}
+  const message = $("#guestMsg").value.trim();
+
+  const todo = queue.filter(q => q.status === "pending" || q.status === "error");
+  if (!todo.length) return;
+
+  if (!configured){
+    toast("Modo vista previa: conecta Google Drive para enviar de verdad");
+    todo.forEach(q => { q.status = "done"; q.el.className = "thumb done"; });
+    refreshUI(); return showThanks(todo.length, guest);
+  }
+
+  uploading = true; refreshUI();
+  const bar = $("#progress"); bar.classList.add("show");
+  let ok = 0, i = 0;
+  for (const item of todo){
+    item.status = "uploading"; item.el.className = "thumb uploading";
+    try {
+      const { blob, type } = await compress(item.file);
+      const data = await toBase64(blob);
+      const ext = type === "image/jpeg" ? "jpg" : (item.file.name.split(".").pop() || "jpg");
+      const res = await fetch(CONFIG.SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ action: "upload", guest, message: i === 0 ? message : "", mimeType: type, ext, data })
+      });
+      const json = await res.json();
+      if (!json.ok) throw new Error(json.error || "Error");
+      item.status = "done"; item.el.className = "thumb done"; ok++;
+    } catch (err){
+      console.error(err);
+      item.status = "error"; item.el.className = "thumb error";
+    }
+    i++;
+    bar.firstElementChild.style.width = (i / todo.length * 100) + "%";
+    refreshUI();
+  }
+  uploading = false; refreshUI();
+  setTimeout(() => { bar.classList.remove("show"); bar.firstElementChild.style.width = "0"; }, 900);
+
+  if (ok){ $("#guestMsg").value = ""; showThanks(ok, guest); loadGallery(); }
+  if (ok < todo.length) toast(`${todo.length - ok} foto(s) no se enviaron. Toca la foto para reintentar.`);
+};
+
+function showThanks(n, guest){
+  $("#thanksText").textContent = `${guest}, tus ${n} foto${n > 1 ? "s" : ""} ya forma${n > 1 ? "n" : ""} parte de nuestro álbum. Gracias por regalarnos estos recuerdos.`;
+  $("#thanks").classList.add("open");
+  goldBurst();
+}
+$("#thanksClose").onclick = () => {
+  $("#thanks").classList.remove("open");
+  for (let k = queue.length - 1; k >= 0; k--) if (queue[k].status === "done"){ queue[k].el.remove(); queue.splice(k, 1); }
+  refreshUI();
+  location.hash = "album";
+};
+
+function goldBurst(){
+  const colors = ["#b8975a","#d8bf85","#ead9ae","#9c7b40"];
+  for (let i = 0; i < 40; i++){
+    const s = document.createElement("span");
+    s.className = "burst";
+    const size = 6 + Math.random() * 12;
+    s.innerHTML = i % 3 ? '<svg width="'+size+'" height="'+size+'" style="color:'+colors[i%4]+'"><use href="#i-spark"/></svg>'
+                        : '<span style="display:block;width:'+size/2+'px;height:'+size/2+'px;border-radius:50%;background:'+colors[i%4]+'"></span>';
+    s.style.left = "50vw"; s.style.top = "45vh";
+    const a = Math.random() * Math.PI * 2, d = 100 + Math.random() * 260;
+    s.style.setProperty("--x", Math.cos(a) * d + "px");
+    s.style.setProperty("--y", Math.sin(a) * d + "px");
+    s.style.setProperty("--r", (Math.random() * 540 - 270) + "deg");
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1900);
+  }
+}
+
+/* ---------- Galería ---------- */
+let photos = [];
+async function loadGallery(){
+  if (!configured){ renderGallery(); return; }
+  const btn = $("#btnRefresh"); btn.disabled = true;
+  try {
+    const res = await fetch(CONFIG.SCRIPT_URL + "?action=list&t=" + Date.now());
+    const json = await res.json();
+    photos = json.files || [];
+  } catch (e){ console.error(e); toast("No se pudo cargar el álbum, intenta de nuevo"); }
+  btn.disabled = false;
+  renderGallery();
+}
+const thumbUrl = (id, w) => `https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w${w}`;
+
+function renderGallery(){
+  const g = $("#gallery"); g.innerHTML = "";
+  $("#galleryEmpty").style.display = photos.length ? "none" : "block";
+  photos.forEach((p, idx) => {
+    const fig = document.createElement("figure");
+    fig.className = "photo";
+    fig.style.animationDelay = Math.min(idx, 20) * 40 + "ms";
+    const img = document.createElement("img");
+    img.loading = "lazy"; img.alt = "Foto compartida por " + (p.guest || "un invitado");
+    img.src = thumbUrl(p.id, 600);
+    const cap = document.createElement("figcaption");
+    cap.textContent = p.guest || "";
+    fig.append(img, cap);
+    fig.onclick = () => openLb(idx);
+    g.appendChild(fig);
+  });
+}
+$("#btnRefresh").onclick = loadGallery;
+
+/* ---------- Lightbox ---------- */
+let lbIdx = 0;
+function openLb(i){ lbIdx = i; showLb(); $("#lightbox").classList.add("open"); }
+function showLb(){
+  const p = photos[lbIdx]; if (!p) return;
+  $("#lbImg").src = thumbUrl(p.id, 2000);
+  $("#lbImg").alt = "Foto de " + (p.guest || "un invitado");
+  $("#lbCap").textContent = p.guest ? "por " + p.guest : "";
+}
+const step = d => { lbIdx = (lbIdx + d + photos.length) % photos.length; showLb(); };
+$("#lbClose").onclick = () => $("#lightbox").classList.remove("open");
+$("#lbPrev").onclick = e => { e.stopPropagation(); step(-1); };
+$("#lbNext").onclick = e => { e.stopPropagation(); step(1); };
+$("#lightbox").onclick = e => { if (e.target.id === "lightbox") $("#lightbox").classList.remove("open"); };
+document.addEventListener("keydown", e => {
+  if (!$("#lightbox").classList.contains("open")) return;
+  if (e.key === "Escape") $("#lightbox").classList.remove("open");
+  if (e.key === "ArrowLeft") step(-1);
+  if (e.key === "ArrowRight") step(1);
+});
+let tx = 0;
+$("#lightbox").addEventListener("touchstart", e => tx = e.touches[0].clientX, { passive: true });
+$("#lightbox").addEventListener("touchend", e => { const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1); });
+
+loadGallery();
+</script>
+</body>
+</html>
